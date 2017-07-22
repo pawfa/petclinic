@@ -13,9 +13,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/")
 public class HelloController {
 
-
     public String index() {
         return "index";
+    }
+
+    @GetMapping("/vet")
+    public String vet(){
+        return "vet";
     }
 
 }

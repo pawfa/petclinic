@@ -1,7 +1,8 @@
 package hello;
 
-import hello.dao.PetRepository;
-import hello.entity.Pet;
+
+import hello.dao.VetRepository;
+import hello.entity.Vet;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -31,10 +32,15 @@ public class Application {
             for (String beanName : beanNames) {
                 System.out.println(beanName);
             }
-
         };
     }
 
+//    @Bean
+//    public void createNewVet(VetRepository vetRepository){
+//
+//        vetRepository.save(new Vet("Jerzy", "Kowalski", "ogólny"));
+//
+//    }
 //    @Bean
 //    public CommandLineRunner demo(PetRepository repository) {
 //        return (args) -> {

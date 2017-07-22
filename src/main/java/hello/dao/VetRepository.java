@@ -6,9 +6,10 @@ package hello.dao;
 
 
 import hello.entity.Pet;
+import hello.entity.Vet;
 import org.springframework.data.repository.CrudRepository;
 
-public interface PetRepository extends CrudRepository<Pet, Long> {
+public interface VetRepository extends CrudRepository<Vet, Long> {
 
-    Iterable<Pet> findAll();
+    Iterable<Vet> findAll();
 }
