@@ -12,4 +12,7 @@ import org.springframework.data.repository.CrudRepository;
 public interface VetRepository extends CrudRepository<Vet, Long> {
 
     Iterable<Vet> findAll();
+
+    @Override
+    <S extends Vet> S save(S s);
 }

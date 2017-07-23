@@ -27,6 +27,12 @@ public class Pet {
     @Column(name ="discharged")
     private String dataOut;
 
+    @Column(name ="pet_status")
+    private String status;
+
+    @Column(name ="vet")
+    private String vet;
+
     protected Pet() {}
 
     public Pet(String name, String owner, String species, String sex, String dataIn, String dataOut) {
@@ -46,8 +52,10 @@ public class Pet {
                 ", owner='" + owner + '\'' +
                 ", species='" + species + '\'' +
                 ", sex='" + sex + '\'' +
-                ", dataIn=" + dataIn +
-                ", dataOut=" + dataOut +
+                ", dataIn='" + dataIn + '\'' +
+                ", dataOut='" + dataOut + '\'' +
+                ", dataOut='" + dataOut + '\'' +
+                ", vet='" + vet + '\'' +
                 '}';
     }
 
@@ -105,5 +113,21 @@ public class Pet {
 
     public void setDataOut(String dataOut) {
         this.dataOut = dataOut;
+    }
+
+    public String getVet() {
+        return vet;
+    }
+
+    public void setVet(String vet) {
+        this.vet = vet;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

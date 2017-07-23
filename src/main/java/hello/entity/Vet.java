@@ -19,10 +19,11 @@ public class Vet {
     @Column(name = "speciality")
     private String spec;
 
-    protected Vet() {
+    public Vet() {
     }
 
-    public Vet(String firstName, String lastName, String spec) {
+    public Vet(String id,String firstName, String lastName, String spec) {
+        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.spec = spec;
