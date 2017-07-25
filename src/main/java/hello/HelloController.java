@@ -1,9 +1,9 @@
 package hello;
 
-import hello.dao.OwnerRepository;
-import hello.dao.PetRepository;
-import hello.dao.VetRepository;
 import hello.entity.Vet;
+import hello.service.owner.OwnerService;
+import hello.service.pet.PetService;
+import hello.service.vet.VetService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,21 +17,20 @@ import java.util.Map;
  */
 
 @Controller
-@RequestMapping("/")
 public class HelloController {
 
-
-    private VetRepository vetRepository;
-    private PetRepository petRepository;
-    private OwnerRepository ownerRepository;
+    private VetService vetService;
+    private PetService petService;
+    private OwnerService ownerService;
 
     @Autowired
-    public HelloController(VetRepository vetRepository, PetRepository petRepository, OwnerRepository ownerRepository) {
-        this.vetRepository = vetRepository;
-        this.petRepository = petRepository;
-        this.ownerRepository = ownerRepository;
+    public HelloController(VetService vetService, PetService petService, OwnerService ownerService) {
+        this.vetService = vetService;
+        this.petService = petService;
+        this.ownerService = ownerService;
     }
 
+    @RequestMapping(value = "/", method = {RequestMethod.POST, RequestMethod.GET})
     public String index() {
         return "index";
     }
@@ -41,12 +40,11 @@ public class HelloController {
 
         Map<String,Iterable<?>> allData = new HashMap<>();
 
-        allData.put("vets", vetRepository.findAll());
-        allData.put("owners", ownerRepository.findAll());
-        allData.put("pets", petRepository.findAll());
+        allData.put("vets", vetService.findAll());
+        allData.put("owners", ownerService.findAll());
+        allData.put("pets", petService.findAll());
 
         theModel.addAttribute("allData",allData);
-
         return "vet";
     }
 
@@ -63,8 +61,13 @@ public class HelloController {
     @PostMapping("/saveVet")
     public String saveVet(@ModelAttribute("vet") Vet vet, Model theModel){
 
-
 //        vetService.addVet(vet);
         return "redirect:/";
+    }
+
+    @GetMapping("/login")
+    public String login(){
+
+        return "login";
     }
 }

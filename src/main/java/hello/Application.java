@@ -21,27 +21,6 @@ public class Application {
         SpringApplication.run(Application.class, args);
     }
 
-//    @Bean
-//    public void createNewVet(VetRepository vetRepository){
-//
-//        vetRepository.save(new Vet("Jerzy", "Kowalski", "ogólny"));
-//
-//    }
-//    @Bean
-//    public CommandLineRunner demo(PetRepository repository) {
-//        return (args) -> {
-//            // save a couple of customers
-//            repository.save(new Pet("Doggo", "Bauer", "dog", "male", null,null));
-//            repository.save(new Pet("Catto", "O'brian", "cat", "female", null,null));
-//
-//            // fetch all customers
-//            System.out.println("all pets");
-//            for (Pet pet : repository.findAll()) {
-//                System.out.println(pet.toString());
-//            }
-//            System.out.println("Znaleziono zwierzaka:"+repository.findByName("Doggo"));
-//        };
-//    }
 }
 
 

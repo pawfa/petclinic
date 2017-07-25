@@ -2,35 +2,53 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
+    <!-- Jquery -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/css/materialize.min.css"/>
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/js/materialize.min.js"></script>
+
+    <!-- CSS styles -->
+
+    <link rel="stylesheet" type="text/css" href="/styles.css"/>
+
     <title>Vet site</title>
 </head>
 <body>
-
-<table>
+<div class="container">
+<table class="striped">
+    <thead>
     <tr>
         <th>First Name</th>
         <th>Last Name</th>
-        <th>Speciality </th>
+        <th>Speciality</th>
     </tr>
+    </thead>
 
     <th:block th:each="vet: ${allData.vets}">
         <tr>
         <!--/*@thymesVar id="vet" type="hello.entity.Vet"*/-->
         <td th:text="${vet.firstName}"></td>
         <td th:text="${vet.lastName}"></td>
-        <td th:text="${vet.speciality}"></td>
+        <td th:text="${vet.spec}"></td>
         </tr>
     </th:block>
 
 </table>
+</div>
 
 
-<table>
+<div class="container"><table class="striped">
+    <thead>
     <tr>
         <th>First Name</th>
         <th>Last Name</th>
-        <th>Mail </th>
+        <th>Mail</th>
     </tr>
+    </thead>
 
     <th:block th:each="owner: ${allData.owners}">
         <tr>
@@ -42,8 +60,11 @@
     </th:block>
 
 </table>
+</div>
 
-<table>
+<div class="container">
+    <table class="striped">
+    <thead>
     <tr>
         <th>Id</th>
         <th>Name</th>
@@ -55,6 +76,7 @@
         <th>Status</th>
         <th>Veterinarian</th>
     </tr>
+    </thead>
 
     <!--/*@thymesVar id="pet" type="hello.entity.Pet"*/-->
     <th:block th:each="pet:${allData.pets}">
@@ -72,5 +94,10 @@
     </th:block>
 
 </table>
+</div>
+
+<form th:action="@{/}" method="post">
+    <input type="submit" value="Sign Out"/>
+</form>
 </body>
 </html>

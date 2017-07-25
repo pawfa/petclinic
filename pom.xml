@@ -88,6 +88,14 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
+
+        <!-- Spring SECURITY-->
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+
         <!-- Spring testing -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -95,7 +103,5 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-
-
 
 </project>

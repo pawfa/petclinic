@@ -1,0 +1,10 @@
+table{
+    margin-bottom: 100px;
+
+}
+th, td{
+    text-align: left;
+}
+th{
+    width: 300px;
+}
