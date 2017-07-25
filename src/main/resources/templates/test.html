@@ -14,7 +14,6 @@
     <!-- CSS styles -->
 
     <link rel="stylesheet" type="text/css" href="../static/index.css"/>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
 
     <title>Pet Clinic App</title>
     <meta charset="UTF-8"/>
@@ -33,24 +32,6 @@
             You have been logged out.
         </div>
         <div class="row">
-            <form class="offset-l3 col l6" th:action="@{/}" method="post" id="form">
-                <div class="row">
-                    <div class="offset-l3 input-field col l6">
-                        <input placeholder="E-mail" name="username" type="text" class="validate"/>
-                        <label>E-Mail</label>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="offset-l3 input-field col l6">
-                        <input placeholder="Password" name="password" type="password" class="validate"/>
-                        <label>Password</label>
-                    </div>
-                </div>
-                <input type="submit" value="Submit"/>
-                <button class="btn waves-effect waves-light" type="submit" name="action" form="form">Submit
-                    <i class="material-icons right">send</i>
-                </button>
-            </form>
 
         </div>
     </div>

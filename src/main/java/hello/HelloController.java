@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -30,8 +31,9 @@ public class HelloController {
         this.ownerService = ownerService;
     }
 
-    @RequestMapping(value = "/", method = {RequestMethod.POST, RequestMethod.GET})
+    @GetMapping("/")
     public String index() {
+
         return "index";
     }
 
@@ -51,7 +53,7 @@ public class HelloController {
     @GetMapping("/addVet")
     public String addVet(Model theModel){
 
-        Vet vet = new Vet("1","Pawcio", "paw","elo");
+        Vet vet = new Vet("1","Paw", "paw","elo");
         theModel.addAttribute("vet",vet);
 
         System.out.println(vet.getFirstName());
@@ -65,9 +67,4 @@ public class HelloController {
         return "redirect:/";
     }
 
-    @GetMapping("/login")
-    public String login(){
-
-        return "login";
-    }
 }

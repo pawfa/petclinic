@@ -96,6 +96,13 @@
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
 
+        <!-- Spring DEV TOOLS-->
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+        </dependency>
+
         <!-- Spring testing -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -104,4 +111,21 @@
         </dependency>
     </dependencies>
 
+<build>
+    <plugins>
+        <plugin>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-maven-plugin</artifactId>
+            <dependencies>
+                <dependency>
+                    <groupId>org.springframework</groupId>
+                    <artifactId>springloaded</artifactId>
+                    <version>1.2.6.RELEASE</version>
+                </dependency>
+            </dependencies>
+        </plugin>
+    </plugins>
+</build>
+
 </project>
+
