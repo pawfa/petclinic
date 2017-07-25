@@ -13,7 +13,7 @@
 
     <!-- CSS styles -->
 
-    <link rel="stylesheet" type="text/css" href="/styles.css"/>
+    <!--<link rel="stylesheet" type="text/css" href="../static/styles.css"/>-->
 
     <title>Vet site</title>
 </head>
@@ -28,9 +28,10 @@
     </tr>
     </thead>
 
+    <!--/*@thymesVar id="vet" type="hello.entity.Vet"*/-->
     <th:block th:each="vet: ${allData.vets}">
         <tr>
-        <!--/*@thymesVar id="vet" type="hello.entity.Vet"*/-->
+
         <td th:text="${vet.firstName}"></td>
         <td th:text="${vet.lastName}"></td>
         <td th:text="${vet.spec}"></td>

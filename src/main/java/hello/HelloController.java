@@ -33,7 +33,6 @@ public class HelloController {
 
     @GetMapping("/")
     public String index() {
-
         return "index";
     }
 
@@ -47,6 +46,7 @@ public class HelloController {
         allData.put("pets", petService.findAll());
 
         theModel.addAttribute("allData",allData);
+
         return "vet";
     }
 
