@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-
+    <meta charset="UTF-8"/>
     <!-- Jquery -->
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 
@@ -13,16 +13,18 @@
 
     <!-- CSS styles -->
 
-    <link rel="stylesheet" type="text/css" href="../static/index.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/main.css"/>
+
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
 
+
+
     <title>Pet Clinic App</title>
-    <meta charset="UTF-8"/>
+
 </head>
 <body>
     <div class="container">
     <H2>Pet Clinic</H2>
-    <a href="vet" th:href="@{/vet}">Link do veta</a>
     </div>
 
     <div class="container">
@@ -33,7 +35,7 @@
             You have been logged out.
         </div>
         <div class="row">
-            <form class="offset-l3 col l6" th:action="@{/}" method="post" id="form">
+            <form class="offset-l3 col l6" th:action="@{/login}" method="post" id="form">
                 <div class="row">
                     <div class="offset-l3 input-field col l6">
                         <input placeholder="E-mail" name="username" type="text" class="validate"/>
@@ -46,7 +48,6 @@
                         <label>Password</label>
                     </div>
                 </div>
-                <input type="submit" value="Submit"/>
                 <button class="btn waves-effect waves-light" type="submit" name="action" form="form">Submit
                     <i class="material-icons right">send</i>
                 </button>
