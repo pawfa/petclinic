@@ -19,22 +19,34 @@
 </head>
 <body>
 <div class="container">
+    <h2>Vet List</h2>
 <table class="striped">
     <thead>
     <tr>
         <th>First Name</th>
         <th>Last Name</th>
         <th>Speciality</th>
+        <th>Action</th>
     </tr>
     </thead>
 
     <!--/*@thymesVar id="vet" type="hello.entity.Vet"*/-->
     <th:block th:each="vet: ${allData.vets}">
         <tr>
-
         <td th:text="${vet.firstName}"></td>
         <td th:text="${vet.lastName}"></td>
         <td th:text="${vet.spec}"></td>
+        <td th:text="Update"></td>|<td th:text="Delete"></td>
+        </tr>
+
+
+    </th:block>
+    <th:block>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><form th:action="@{/addVet}"><Button  th:type="submit" class="waves-effect btn-flat">Add</Button></form></td>
         </tr>
     </th:block>
 
@@ -42,7 +54,9 @@
 </div>
 
 
-<div class="container"><table class="striped">
+<div class="container">
+    <h2>Owner List</h2>
+    <table class="striped">
     <thead>
     <tr>
         <th>First Name</th>
@@ -64,6 +78,7 @@
 </div>
 
 <div class="container">
+    <h2>Pet List</h2>
     <table class="striped">
     <thead>
     <tr>

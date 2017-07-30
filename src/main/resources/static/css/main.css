@@ -1,11 +1,5 @@
 .container{
     margin: 0 auto;
-    border: solid red 1px;
     text-align: center;
 }
-.row{
-    border: solid red 10px;
-}
-H2{
-    font-size:100px;
-}
+
