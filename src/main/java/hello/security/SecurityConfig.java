@@ -32,7 +32,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
                 .and()
                 .formLogin()
                 .loginPage("/")
-                .loginProcessingUrl("/login")
+                .loginProcessingUrl("/")
                 .successHandler(authenticationSuccessHandler);
     }
 
