@@ -17,11 +17,15 @@ public class OwnerServiceImpl implements OwnerService {
         this.ownerRepository = ownerRepository;
     }
 
-
-
     @Override
     @Transactional
     public Iterable<Owner> findAll() {
         return null;
+    }
+
+    @Override
+    @Transactional
+    public void saveOwner(Owner owner) {
+        ownerRepository.save(owner);
     }
 }

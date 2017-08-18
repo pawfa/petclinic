@@ -1,5 +1,7 @@
 package hello.entity;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 import javax.persistence.*;
 
 @Entity
@@ -11,26 +13,24 @@ public class Owner {
     private String id;
 
     @Column(name = "first_name")
+    @NotEmpty
     private String firstName;
 
     @Column(name = "last_name")
+    @NotEmpty
     private String lastName;
 
     @Column(name = "pet")
     private String pet;
 
     @Column(name = "mail")
+    @NotEmpty
     private String mail;
 
-    protected Owner() {
-    }
+    @Column(name = "password")
+    @NotEmpty
+    private String password;
 
-    public Owner(String firstName, String lastName, String pet, String mail) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.pet = pet;
-        this.mail = mail;
-    }
 
     public String getId() {
         return id;
@@ -70,6 +70,14 @@ public class Owner {
 
     public void setMail(String mail) {
         this.mail = mail;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     @Override

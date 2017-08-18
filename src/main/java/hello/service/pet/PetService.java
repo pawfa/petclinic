@@ -11,4 +11,5 @@ import org.springframework.data.repository.CrudRepository;
 public interface PetService {
 
     Iterable<Pet> findAll();
+    Iterable<Pet> findPetsByOwner(String id);
 }

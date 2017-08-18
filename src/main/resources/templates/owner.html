@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <!-- Jquery -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/css/materialize.min.css"/>
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/js/materialize.min.js"></script>
+
+    <!-- CSS styles -->
+
+    <link rel="stylesheet" type="text/css" href="/css/styles.css"/>
+
+    <title>Vet site</title>
+</head>
+<body>
+<div class="container">
+    <h2>Vet List</h2>
+</div>
+
+<div class="container">
+    <h2>Pet List</h2>
+    <table class="striped">
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Owner</th>
+        <th>Species</th>
+        <th>Sex</th>
+        <th>Data In</th>
+        <th>Data Out</th>
+        <th>Status</th>
+        <th>Veterinarian</th>
+    </tr>
+    </thead>
+
+    <!--/*@thymesVar id="pet" type="hello.entity.Pet"*/-->
+    <th:block th:each="pet:${pets}">
+        <tr>
+        <td th:text="${pet.id}"></td>
+        <td th:text="${pet.name}"></td>
+        <td th:text="${pet.owner}"></td>
+        <td th:text="${pet.species}"></td>
+        <td th:text="${pet.sex}"></td>
+        <td th:text="${pet.dataIn}"></td>
+        <td th:text="${pet.dataOut}"></td>
+        <td th:text="${pet.status}"></td>
+        <td th:text="${pet.vet}"></td>
+        </tr>
+    </th:block>
+
+</table>
+</div>
+
+<form th:action="@{/logout}" method="post">
+    <input type="submit" value="Sign Out"/>
+</form>
+</body>
+</html>

@@ -22,4 +22,9 @@ public class PetServiceImpl implements PetService {
     public Iterable<Pet> findAll() {
         return petRepository.findAll();
     }
+
+    @Override
+    public Iterable<Pet> findPetsByOwner(String id) {
+        return petRepository.findPetsByOwner(id);
+    }
 }

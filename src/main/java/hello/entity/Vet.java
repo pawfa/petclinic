@@ -1,5 +1,7 @@
 package hello.entity;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 import javax.persistence.*;
 
 @Entity
@@ -11,13 +13,20 @@ public class Vet {
     private String id;
 
     @Column(name = "first_name")
+    @NotEmpty
     private String firstName;
 
     @Column(name = "last_name")
+    @NotEmpty
     private String lastName;
 
     @Column(name = "speciality")
+    @NotEmpty
     private String spec;
+
+    @Column(name = "password")
+    @NotEmpty
+    private String password;
 
     public Vet() {
     }
@@ -27,6 +36,7 @@ public class Vet {
         this.firstName = firstName;
         this.lastName = lastName;
         this.spec = spec;
+        this.password = password;
     }
 
     public String getId() {
@@ -59,6 +69,14 @@ public class Vet {
 
     public void setSpec(String spec) {
         this.spec = spec;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     @Override
