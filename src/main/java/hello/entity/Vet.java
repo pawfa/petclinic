@@ -24,6 +24,10 @@ public class Vet {
     @NotEmpty
     private String spec;
 
+    @Column(name = "mail")
+    @NotEmpty
+    private String mail;
+
     @Column(name = "password")
     @NotEmpty
     private String password;
@@ -37,6 +41,7 @@ public class Vet {
         this.lastName = lastName;
         this.spec = spec;
         this.password = password;
+        this.mail = mail;
     }
 
     public String getId() {
@@ -77,6 +82,14 @@ public class Vet {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getMail() {
+        return mail;
+    }
+
+    public void setMail(String mail) {
+        this.mail = mail;
     }
 
     @Override

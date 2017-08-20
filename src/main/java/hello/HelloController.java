@@ -46,7 +46,7 @@ public class HelloController {
     }
 
     @PostMapping("/registration")
-    public String registrationSubmit(@ModelAttribute Owner owner, Model theModel) {
+    public String registrationSubmit(@ModelAttribute Owner owner) {
 
         return "owner";
     }
@@ -68,17 +68,15 @@ public class HelloController {
     @GetMapping("/addVet")
     public String addVet(Model theModel){
 
-        Vet vet = new Vet("1","Paw", "paw","elo");
-        theModel.addAttribute("vet",vet);
+        theModel.addAttribute("vet", new Vet());
 
-        System.out.println(vet.getFirstName());
-        return "save_vet";
+        return "add_vet";
     }
 
-    @PostMapping("/saveVet")
-    public String saveVet(@ModelAttribute("vet") Vet vet, Model theModel){
+    @PostMapping("/addVet")
+    public String saveVet(@ModelAttribute("vet") Vet vet){
 
-//        vetService.addVet(vet);
+        vetService.save(vet);
         return "redirect:/";
     }
 
