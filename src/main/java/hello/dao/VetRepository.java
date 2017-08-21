@@ -15,4 +15,6 @@ public interface VetRepository extends CrudRepository<Vet, Long> {
 
     @Override
     <S extends Vet> S save(S s);
+
+    Vet getById(int id);
 }

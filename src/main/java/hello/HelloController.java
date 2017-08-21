@@ -61,23 +61,31 @@ public class HelloController {
         allData.put("pets", petService.findAll());
 
         theModel.addAttribute("allData",allData);
+        theModel.addAttribute("vet", new Vet());
 
         return "vet";
     }
 
     @GetMapping("/addVet")
     public String addVet(Model theModel){
-
         theModel.addAttribute("vet", new Vet());
-
         return "add_vet";
     }
 
     @PostMapping("/addVet")
     public String saveVet(@ModelAttribute("vet") Vet vet){
-
         vetService.save(vet);
         return "redirect:/";
+    }
+
+    @PostMapping("/updateVet")
+    public String updateVet(@RequestParam(value = "vetId") int theId, Model theModel){
+        System.out.println(theId+" TUTAJ");
+        Vet vet = vetService.getById(theId);
+        System.out.println(vet.getId());
+        theModel.addAttribute("vet", vet);
+
+        return "add_vet";
     }
 
 }

@@ -10,7 +10,7 @@ public class Vet {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private String id;
+    private int id;
 
     @Column(name = "first_name")
     @NotEmpty
@@ -35,7 +35,7 @@ public class Vet {
     public Vet() {
     }
 
-    public Vet(String id,String firstName, String lastName, String spec) {
+    public Vet(int id,String firstName, String lastName, String spec) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -44,11 +44,11 @@ public class Vet {
         this.mail = mail;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 

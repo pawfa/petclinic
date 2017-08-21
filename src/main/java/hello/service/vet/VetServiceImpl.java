@@ -29,4 +29,9 @@ public class VetServiceImpl implements VetService {
     public <S extends Vet> S save(S s) {
         return vetRepository.save(s);
     }
+
+    @Override
+    public Vet getById(int id) {
+        return vetRepository.getById(id);
+    }
 }
