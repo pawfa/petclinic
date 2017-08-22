@@ -34,4 +34,10 @@ public class VetServiceImpl implements VetService {
     public Vet getById(int id) {
         return vetRepository.getById(id);
     }
+
+    @Override
+    @Transactional
+    public void deleteVetById(int id) {
+        vetRepository.deleteVetById(id);
+    }
 }

@@ -7,5 +7,6 @@ public interface VetService {
     Iterable<Vet> findAll();
     <S extends Vet> S save(S s);
     Vet getById(int id);
+    void deleteVetById(int id);
 
 }

@@ -17,4 +17,6 @@ public interface VetRepository extends CrudRepository<Vet, Long> {
     <S extends Vet> S save(S s);
 
     Vet getById(int id);
+
+    void deleteVetById(int id);
 }

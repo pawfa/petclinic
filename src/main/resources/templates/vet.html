@@ -40,10 +40,12 @@
         <td th:text="${vet.spec}"></td>
         <td>
             <form th:action="@{/updateVet}" method="post">
-            <input type="hidden" th:name="vetId" th:value="${vet.id}" />
-            <Button th:type="submit" class="waves-effect btn-flat btn-half">Update</Button>
+                <input type="hidden" th:name="vetId" th:value="${vet.id}" />
+                <Button th:type="submit" class="waves-effect btn-flat btn-half">Update</Button>
             </form>
-            <form th:action="@{/deleteVet}"><Button  th:type="submit" class="waves-effect btn-flat btn-half">Delete</Button>
+            <form th:action="@{/deleteVet}">
+                <input type="hidden" th:name="vetId" th:value="${vet.id}" />
+                <Button  th:type="submit" class="waves-effect btn-flat btn-half">Delete</Button>
             </form>
         </td>
         </tr>

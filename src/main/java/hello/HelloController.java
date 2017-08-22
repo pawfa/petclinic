@@ -75,17 +75,23 @@ public class HelloController {
     @PostMapping("/addVet")
     public String saveVet(@ModelAttribute("vet") Vet vet){
         vetService.save(vet);
-        return "redirect:/";
+        return "redirect:/vet";
     }
 
     @PostMapping("/updateVet")
     public String updateVet(@RequestParam(value = "vetId") int theId, Model theModel){
-        System.out.println(theId+" TUTAJ");
         Vet vet = vetService.getById(theId);
-        System.out.println(vet.getId());
         theModel.addAttribute("vet", vet);
-
         return "add_vet";
     }
+
+    @GetMapping("/deleteVet")
+    public String deleteVet(@RequestParam(value = "vetId") int theId){
+        System.out.println(theId);
+        vetService.deleteVetById(theId);
+        return "redirect:/vet";
+    }
+
+
 
 }
