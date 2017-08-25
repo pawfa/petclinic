@@ -5,7 +5,6 @@ package hello.dao;
  */
 
 
-import hello.entity.Pet;
 import hello.entity.Vet;
 import org.springframework.data.repository.CrudRepository;
 
@@ -19,4 +18,7 @@ public interface VetRepository extends CrudRepository<Vet, Long> {
     Vet getById(int id);
 
     void deleteVetById(int id);
+
+    Vet getByMail(String mail);
+
 }

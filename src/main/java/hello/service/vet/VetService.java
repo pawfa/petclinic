@@ -8,5 +8,6 @@ public interface VetService {
     <S extends Vet> S save(S s);
     Vet getById(int id);
     void deleteVetById(int id);
+    Vet getByMail(String mail);
 
 }

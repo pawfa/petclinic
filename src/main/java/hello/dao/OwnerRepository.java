@@ -13,4 +13,5 @@ public interface OwnerRepository extends CrudRepository<Owner, Long> {
     Iterable<Owner> findAll();
     @Override
     <S extends Owner> S save(S s);
+    Owner findByMail(String mail);
 }

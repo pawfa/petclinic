@@ -20,12 +20,17 @@ public class OwnerServiceImpl implements OwnerService {
     @Override
     @Transactional
     public Iterable<Owner> findAll() {
-        return null;
+        return ownerRepository.findAll();
     }
 
     @Override
     @Transactional
     public void saveOwner(Owner owner) {
         ownerRepository.save(owner);
+    }
+
+    @Override
+    public Owner findByMail(String mail) {
+        return ownerRepository.findByMail(mail);
     }
 }

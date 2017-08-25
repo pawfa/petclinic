@@ -6,10 +6,10 @@ package hello.service.owner;
 
 
 import hello.entity.Owner;
-import org.springframework.data.repository.CrudRepository;
 
 public interface OwnerService {
 
     Iterable<Owner> findAll();
     void saveOwner(Owner owner);
+    Owner findByMail(String mail);
 }

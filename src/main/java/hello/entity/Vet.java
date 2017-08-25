@@ -25,7 +25,6 @@ public class Vet {
     private String spec;
 
     @Column(name = "mail")
-    @NotEmpty
     private String mail;
 
     @Column(name = "password")
@@ -41,7 +40,6 @@ public class Vet {
         this.lastName = lastName;
         this.spec = spec;
         this.password = password;
-        this.mail = mail;
     }
 
     public int getId() {
@@ -88,17 +86,19 @@ public class Vet {
         return mail;
     }
 
-    public void setMail(String mail) {
-        this.mail = mail;
+    public void setMail() {
+        this.mail = firstName.toLowerCase()+"."+lastName.toLowerCase()+"@petclinic.com";
     }
 
     @Override
     public String toString() {
         return "Vet{" +
-                "id='" + id + '\'' +
+                "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", spec='" + spec + '\'' +
+                ", mail='" + mail + '\'' +
+                ", password='" + password + '\'' +
                 '}';
     }
 }

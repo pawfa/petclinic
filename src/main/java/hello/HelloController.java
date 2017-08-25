@@ -3,17 +3,17 @@ package hello;
 import hello.entity.Owner;
 import hello.entity.Pet;
 import hello.entity.Vet;
+import hello.security.service.SecurityService;
 import hello.service.owner.OwnerService;
 import hello.service.pet.PetService;
 import hello.service.vet.VetService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -26,12 +26,14 @@ public class HelloController {
     private VetService vetService;
     private PetService petService;
     private OwnerService ownerService;
+    private SecurityService securityService;
 
     @Autowired
-    public HelloController(VetService vetService, PetService petService, OwnerService ownerService) {
+    public HelloController(VetService vetService, PetService petService, OwnerService ownerService, SecurityService securityService) {
         this.vetService = vetService;
         this.petService = petService;
         this.ownerService = ownerService;
+        this.securityService = securityService;
     }
 
     @GetMapping("/")
@@ -47,7 +49,8 @@ public class HelloController {
 
     @PostMapping("/registration")
     public String registrationSubmit(@ModelAttribute Owner owner) {
-
+        ownerService.saveOwner(owner);
+//        securityService.autologin(owner.getMail(), owner.getPassword());
         return "owner";
     }
 
@@ -59,9 +62,10 @@ public class HelloController {
         allData.put("vets", vetService.findAll());
         allData.put("owners", ownerService.findAll());
         allData.put("pets", petService.findAll());
-
         theModel.addAttribute("allData",allData);
+
         theModel.addAttribute("vet", new Vet());
+        theModel.addAttribute("owner2", ownerService.findByMail("u"));
 
         return "vet";
     }
@@ -87,11 +91,16 @@ public class HelloController {
 
     @GetMapping("/deleteVet")
     public String deleteVet(@RequestParam(value = "vetId") int theId){
-        System.out.println(theId);
         vetService.deleteVetById(theId);
         return "redirect:/vet";
     }
+    @GetMapping("/owner")
+    public String owner() {
 
-
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        Owner user = ownerService.findByMail(auth.getName());
+        System.out.println(user.getFirstName());
+        return "owner";
+    }
 
 }

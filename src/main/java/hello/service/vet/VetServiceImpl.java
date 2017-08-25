@@ -20,13 +20,13 @@ public class VetServiceImpl implements VetService {
     @Override
     @Transactional
     public Iterable<Vet> findAll() {
-
         return vetRepository.findAll();
     }
 
     @Override
     @Transactional
     public <S extends Vet> S save(S s) {
+        s.setMail();
         return vetRepository.save(s);
     }
 
@@ -39,5 +39,11 @@ public class VetServiceImpl implements VetService {
     @Transactional
     public void deleteVetById(int id) {
         vetRepository.deleteVetById(id);
+    }
+
+    @Override
+    @Transactional
+    public Vet getByMail(String mail) {
+        return vetRepository.getByMail(mail);
     }
 }

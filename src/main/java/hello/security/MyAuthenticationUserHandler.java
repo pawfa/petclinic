@@ -26,7 +26,7 @@ public class MyAuthenticationUserHandler implements AuthenticationSuccessHandler
         if (authorities.contains(ADMIN_AUTHORITY)) {
             redirectStrategy.sendRedirect(httpServletRequest, httpServletResponse, "/vet");
         } else {
-            redirectStrategy.sendRedirect(httpServletRequest, httpServletResponse, "/user");
+            redirectStrategy.sendRedirect(httpServletRequest, httpServletResponse, "/owner");
         }
     }
 }
