@@ -41,6 +41,14 @@ public class HelloController {
         return "index";
     }
 
+    @GetMapping("/login-error")
+    public String loginError(Model theModel) {
+        theModel.addAttribute("loginError", new Owner());
+        System.out.println("elo");
+        return "index";
+    }
+
+
     @GetMapping("/registration")
     public String registrationForm(Model theModel) {
         theModel.addAttribute("owner", new Owner());
@@ -58,12 +66,10 @@ public class HelloController {
     public String vet(Model theModel){
 
         Map<String,Iterable<?>> allData = new HashMap<>();
-
         allData.put("vets", vetService.findAll());
         allData.put("owners", ownerService.findAll());
         allData.put("pets", petService.findAll());
         theModel.addAttribute("allData",allData);
-
         theModel.addAttribute("vet", new Vet());
         theModel.addAttribute("owner2", ownerService.findByMail("u"));
 

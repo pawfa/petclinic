@@ -1,6 +1,7 @@
-package hello.service.owner;
+package hello.dao;
 
 import hello.entity.Owner;
+import hello.service.owner.OwnerService;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +30,7 @@ public class UserDetailsServiceDAO implements UserDetailsService {
         this.ownerService = ownerService;
     }
 
-    protected final Log logger = LogFactory.getLog(getClass());
+    private final Log logger = LogFactory.getLog(getClass());
 
     @Override
     public UserDetails loadUserByUsername(String mail) throws UsernameNotFoundException {
@@ -44,11 +45,6 @@ public class UserDetailsServiceDAO implements UserDetailsService {
             System.out.println(ow.getFirstName());
 
         }
-
-//            if (o == null){
-//                logger.info("Owner jest null");
-//            }
-
 
         return buildUserFromUserEntity(o);
     }
