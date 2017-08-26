@@ -12,7 +12,10 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -42,8 +45,9 @@ public class HelloController {
     }
 
     @GetMapping("/login-error")
-    public String loginError(Model theModel) {
-        theModel.addAttribute("loginError", new Owner());
+    public String loginError(@Valid Owner owner, Model theModel) {
+        theModel.addAttribute("loginError", true);
+        System.out.println(owner.getFirstName());
         System.out.println("elo");
         return "index";
     }
@@ -56,8 +60,12 @@ public class HelloController {
     }
 
     @PostMapping("/registration")
-    public String registrationSubmit(@ModelAttribute Owner owner) {
-        ownerService.saveOwner(owner);
+    public String registrationSubmit(@ModelAttribute @Valid Owner owner, BindingResult bindingResult) {
+
+        if (bindingResult.hasErrors()) {
+            return "registrationForm";
+        }
+//        ownerService.saveOwner(owner);
 //        securityService.autologin(owner.getMail(), owner.getPassword());
         return "owner";
     }

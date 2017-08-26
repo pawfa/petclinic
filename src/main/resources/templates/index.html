@@ -28,12 +28,12 @@
     <a th:href="@{/registration}">Hello</a>
 
     <div class="container">
-        <!--<div th:if="${param.error}">-->
-            <!--Invalid username and password.-->
-        <!--</div>-->
-        <!--<div th:if="${param.logout}">-->
-            <!--You have been logged out.-->
-        <!--</div>-->
+        <div th:if="${param.error}">
+            Invalid username and password.
+        </div>
+        <div th:if="${param.logout}">
+            You have been logged out.
+        </div>
 
 
         <p th:if="${loginError}" class="error">Wrong user or password</p>

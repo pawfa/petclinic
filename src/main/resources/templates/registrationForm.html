@@ -33,6 +33,7 @@
                         <div class="col l6">
                         <div class="input-field">
                             <input placeholder="Name" th:field="*{firstName}" type="text" />
+                            <td th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">Name Error</td>
                             <label>First name</label>
                         </div>
                         </div>
