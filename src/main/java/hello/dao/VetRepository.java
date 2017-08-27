@@ -19,6 +19,6 @@ public interface VetRepository extends CrudRepository<Vet, Long> {
 
     void deleteVetById(int id);
 
-    Vet getByMail(String mail);
+    Vet findByMail(String mail);
 
 }

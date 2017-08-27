@@ -38,6 +38,8 @@
 
         <p th:if="${loginError}" class="error">Wrong user or password</p>
 
+        <p th:if="${nullPointer}" class="error">There is no user in database</p>
+
         <div class="row">
             <div class="offset-l2 col l3">
             <form th:action="@{/}" method="post">

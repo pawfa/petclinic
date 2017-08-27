@@ -1,5 +1,6 @@
 package hello;
 
+import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
 import hello.entity.Owner;
 import hello.entity.Pet;
 import hello.entity.Vet;
@@ -7,15 +8,22 @@ import hello.security.service.SecurityService;
 import hello.service.owner.OwnerService;
 import hello.service.pet.PetService;
 import hello.service.vet.VetService;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -26,6 +34,7 @@ import java.util.Map;
 @Controller
 public class HelloController {
 
+    private final Log logger = LogFactory.getLog(getClass());
     private VetService vetService;
     private PetService petService;
     private OwnerService ownerService;
@@ -40,15 +49,16 @@ public class HelloController {
     }
 
     @GetMapping("/")
-    public String index() {
+    public String index() throws  IOException {
+
         return "index";
     }
 
     @GetMapping("/login-error")
-    public String loginError(@Valid Owner owner, Model theModel) {
+    public String loginError(HttpServletRequest req, Model theModel)  {
+        System.out.println(req.getAttribute("parameter"));
+        System.out.println(req.getSession().getAttribute("parameter"));
         theModel.addAttribute("loginError", true);
-        System.out.println(owner.getFirstName());
-        System.out.println("elo");
         return "index";
     }
 
@@ -116,5 +126,4 @@ public class HelloController {
         System.out.println(user.getFirstName());
         return "owner";
     }
-
 }

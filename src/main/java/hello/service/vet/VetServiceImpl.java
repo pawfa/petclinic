@@ -43,7 +43,7 @@ public class VetServiceImpl implements VetService {
 
     @Override
     @Transactional
-    public Vet getByMail(String mail) {
-        return vetRepository.getByMail(mail);
+    public Vet findByMail(String mail) {
+        return vetRepository.findByMail(mail);
     }
 }
