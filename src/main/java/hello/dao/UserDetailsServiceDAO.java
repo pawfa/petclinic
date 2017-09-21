@@ -38,15 +38,7 @@ public class UserDetailsServiceDAO implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String mail) throws UsernameNotFoundException {
 
-//        try {
             return buildUserFromUserEntity(mail);
-//        } catch (UsernameNotFoundException e) {
-//            logger.error("Throwed",e);
-//            throw new UsernameNotFoundException("Username not found");
-//        }
-
-
-
     }
 
     private User buildUserFromUserEntity(String mail) throws UsernameNotFoundException {
@@ -56,11 +48,11 @@ public class UserDetailsServiceDAO implements UserDetailsService {
         boolean credentialsNonExpired = true;
         boolean accountNonLocked = true;
 
-
             if(mail.contains("@petclinic.com")){
 
-                if (vet == null )throw new UsernameNotFoundException("Username vet not found");
                 vet = vetService.findByMail(mail);
+                if (vet == null )throw new UsernameNotFoundException("Username vet not found");
+
                 String username = vet.getMail();
                 String password = vet.getPassword();
 
@@ -74,8 +66,9 @@ public class UserDetailsServiceDAO implements UserDetailsService {
                 return springUser;
             }else {
 
-                if (owner == null )throw new UsernameNotFoundException("Username owner not found");
                 owner = ownerService.findByMail(mail);
+                if (owner == null )throw new UsernameNotFoundException("Username owner not found");
+
                 String username = owner.getMail();
                 String password = owner.getPassword();
                 Collection authorities = new ArrayList();

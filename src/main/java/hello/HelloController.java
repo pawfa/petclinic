@@ -1,6 +1,5 @@
 package hello;
 
-import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
 import hello.entity.Owner;
 import hello.entity.Pet;
 import hello.entity.Vet;
@@ -10,18 +9,15 @@ import hello.service.pet.PetService;
 import hello.service.vet.VetService;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.io.IOException;
 import java.util.HashMap;
@@ -56,8 +52,6 @@ public class HelloController {
 
     @GetMapping("/login-error")
     public String loginError(HttpServletRequest req, Model theModel)  {
-        System.out.println(req.getAttribute("parameter"));
-        System.out.println(req.getSession().getAttribute("parameter"));
         theModel.addAttribute("loginError", true);
         return "index";
     }
