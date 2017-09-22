@@ -24,7 +24,13 @@ public class PetServiceImpl implements PetService {
     }
 
     @Override
-    public Iterable<Pet> findPetsByOwner(String id) {
-        return petRepository.findPetsByOwner(id);
+    public Pet save(Pet pet) {
+        return petRepository.save(pet);
     }
+
+    @Override
+    public Pet findById(int id) {
+        return petRepository.findById(id);
+    }
+
 }

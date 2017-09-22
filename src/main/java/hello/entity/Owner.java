@@ -10,7 +10,7 @@ public class Owner {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private String id;
+    private int id;
 
     @Column(name = "first_name")
     @NotEmpty
@@ -32,11 +32,11 @@ public class Owner {
     private String password;
 
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 

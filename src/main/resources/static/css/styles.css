@@ -5,14 +5,16 @@ table{
 th, td{
     text-align: left;
 }
-td:last-child{
+.vet{
     text-align: center;
     padding: 0;
 }
 
-th{
-    width: 300px;
+.pet{
+    text-align: center;
+    padding: 0;
 }
+
 .btn-full {
     width: 100%;
     height: 100%;

@@ -6,7 +6,6 @@ import hello.entity.Vet;
 import hello.security.service.SecurityService;
 import hello.service.owner.OwnerService;
 import hello.service.pet.PetService;
-import hello.service.vet.VetService;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,11 +16,8 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Created by Pawel on 2017-07-21.
@@ -31,31 +27,32 @@ import java.util.Map;
 public class HelloController {
 
     private final Log logger = LogFactory.getLog(getClass());
-    private VetService vetService;
+
     private PetService petService;
     private OwnerService ownerService;
     private SecurityService securityService;
 
     @Autowired
-    public HelloController(VetService vetService, PetService petService, OwnerService ownerService, SecurityService securityService) {
-        this.vetService = vetService;
+    public HelloController(PetService petService, OwnerService ownerService, SecurityService securityService) {
         this.petService = petService;
         this.ownerService = ownerService;
         this.securityService = securityService;
     }
 
+    /* main page part */
+
     @GetMapping("/")
     public String index() throws  IOException {
-
         return "index";
     }
 
     @GetMapping("/login-error")
-    public String loginError(HttpServletRequest req, Model theModel)  {
+    public String loginError(Model theModel)  {
         theModel.addAttribute("loginError", true);
         return "index";
     }
 
+    /* registration page part */
 
     @GetMapping("/registration")
     public String registrationForm(Model theModel) {
@@ -74,44 +71,8 @@ public class HelloController {
         return "owner";
     }
 
-    @GetMapping("/vet")
-    public String vet(Model theModel){
+    /* owner page part */
 
-        Map<String,Iterable<?>> allData = new HashMap<>();
-        allData.put("vets", vetService.findAll());
-        allData.put("owners", ownerService.findAll());
-        allData.put("pets", petService.findAll());
-        theModel.addAttribute("allData",allData);
-        theModel.addAttribute("vet", new Vet());
-        theModel.addAttribute("owner2", ownerService.findByMail("u"));
-
-        return "vet";
-    }
-
-    @GetMapping("/addVet")
-    public String addVet(Model theModel){
-        theModel.addAttribute("vet", new Vet());
-        return "add_vet";
-    }
-
-    @PostMapping("/addVet")
-    public String saveVet(@ModelAttribute("vet") Vet vet){
-        vetService.save(vet);
-        return "redirect:/vet";
-    }
-
-    @PostMapping("/updateVet")
-    public String updateVet(@RequestParam(value = "vetId") int theId, Model theModel){
-        Vet vet = vetService.getById(theId);
-        theModel.addAttribute("vet", vet);
-        return "add_vet";
-    }
-
-    @GetMapping("/deleteVet")
-    public String deleteVet(@RequestParam(value = "vetId") int theId){
-        vetService.deleteVetById(theId);
-        return "redirect:/vet";
-    }
     @GetMapping("/owner")
     public String owner() {
 
@@ -119,5 +80,29 @@ public class HelloController {
         Owner user = ownerService.findByMail(auth.getName());
         System.out.println(user.getFirstName());
         return "owner";
+    }
+
+    /* pet page part */
+
+    @GetMapping("/addPet")
+    public String addPet(Model theModel){
+        theModel.addAttribute("pet", new Pet());
+        return "add_pet";
+    }
+
+    @PostMapping("/addPet")
+    public String savePet(@ModelAttribute("pet") Pet pet){
+        petService.save(pet);
+        return "redirect:/vet";
+    }
+
+    @PostMapping("/updatePet")
+    public String updatePet(@RequestParam(value = "petOwner") String petOwner, Model theModel){
+
+        Owner owner =  ownerService.findByFirstNameAndLastName(petOwner);
+        Pet pet = petService.findById(owner.getId());
+        theModel.addAttribute("pet", pet);
+        return "add_pet";
+
     }
 }

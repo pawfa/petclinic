@@ -11,6 +11,7 @@ import org.springframework.data.repository.CrudRepository;
 public interface PetRepository extends CrudRepository<Pet, Long> {
 
     Iterable<Pet> findAll();
-    Iterable<Pet> findPetsByOwner(String id);
-
+    @Override
+    <S extends Pet> S save(S s);
+    Pet findById(int id);
 }

@@ -33,4 +33,10 @@ public class OwnerServiceImpl implements OwnerService {
     public Owner findByMail(String mail) {
         return ownerRepository.findByMail(mail);
     }
+
+    @Override
+    public Owner findByFirstNameAndLastName(String firstLastName) {
+        String[] splitted = firstLastName.split("\\s");
+        return ownerRepository.findByFirstNameAndLastName(splitted[0],splitted[1]);
+    }
 }
