@@ -33,4 +33,15 @@ public class PetServiceImpl implements PetService {
         return petRepository.findById(id);
     }
 
+    @Override
+    @Transactional
+    public void deletePetById(int id) {
+        petRepository.deletePetById(id);
+    }
+
+    @Override
+    public Iterable<Pet> findByOwnerFirstNameAndOwnerLastName(String ownerFirstName, String ownerLastName) {
+        return petRepository.findByOwnerFirstNameAndOwnerLastName(ownerFirstName, ownerLastName);
+    }
+
 }

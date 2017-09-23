@@ -13,4 +13,6 @@ public interface PetService {
     Iterable<Pet> findAll();
     Pet save (Pet pet);
     Pet findById(int id);
+    void deletePetById(int id);
+    Iterable<Pet> findByOwnerFirstNameAndOwnerLastName(String ownerFirstName, String ownerLastName);
 }

@@ -20,9 +20,6 @@ public class Owner {
     @NotEmpty
     private String lastName;
 
-    @Column(name = "pet")
-    private String pet;
-
     @Column(name = "mail")
     @NotEmpty
     private String mail;
@@ -56,14 +53,6 @@ public class Owner {
         this.lastName = lastName;
     }
 
-    public String getPet() {
-        return pet;
-    }
-
-    public void setPet(String pet) {
-        this.pet = pet;
-    }
-
     public String getMail() {
         return mail;
     }
@@ -86,7 +75,6 @@ public class Owner {
                 "id='" + id + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", pet='" + pet + '\'' +
                 ", mail='" + mail + '\'' +
                 '}';
     }

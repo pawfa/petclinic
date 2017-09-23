@@ -29,7 +29,8 @@
     <tr>
         <th>Id</th>
         <th>Name</th>
-        <th>Owner</th>
+        <th>Owner First Name</th>
+        <th>Owner Last Name</th>
         <th>Species</th>
         <th>Sex</th>
         <th>Data In</th>
@@ -44,7 +45,8 @@
         <tr>
         <td th:text="${pet.id}"></td>
         <td th:text="${pet.name}"></td>
-        <td th:text="${pet.owner}"></td>
+        <td th:text="${pet.ownerFirstName}"></td>
+        <td th:text="${pet.ownerLastName}"></td>
         <td th:text="${pet.species}"></td>
         <td th:text="${pet.sex}"></td>
         <td th:text="${pet.dataIn}"></td>

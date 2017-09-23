@@ -18,6 +18,9 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Pawel on 2017-07-21.
@@ -74,11 +77,15 @@ public class HelloController {
     /* owner page part */
 
     @GetMapping("/owner")
-    public String owner() {
+    public String owner(Model theModel) {
 
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         Owner user = ownerService.findByMail(auth.getName());
-        System.out.println(user.getFirstName());
+//        System.out.println(user.getFirstName());
+//        System.out.println(user.getLastName());
+        Iterable<Pet> pets = petService.findByOwnerFirstNameAndOwnerLastName(user.getFirstName(),user.getLastName());
+        theModel.addAttribute("pets",pets);
+
         return "owner";
     }
 
@@ -97,12 +104,16 @@ public class HelloController {
     }
 
     @PostMapping("/updatePet")
-    public String updatePet(@RequestParam(value = "petOwner") String petOwner, Model theModel){
+    public String updatePet(@RequestParam(value = "petId") int petId, Model theModel){
 
-        Owner owner =  ownerService.findByFirstNameAndLastName(petOwner);
-        Pet pet = petService.findById(owner.getId());
+        Pet pet = petService.findById(petId);
         theModel.addAttribute("pet", pet);
         return "add_pet";
+    }
 
+    @GetMapping("/deletePet")
+    public String deletePet(@RequestParam(value = "petId") int theId){
+        petService.deletePetById(theId);
+        return "redirect:/vet";
     }
 }

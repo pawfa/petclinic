@@ -17,7 +17,10 @@ public class Pet {
     private int id;
 
     private String name;
-    private String owner;
+    @Column(name ="owner_first_name")
+    private String ownerFirstName;
+    @Column(name ="owner_last_name")
+    private String ownerLastName;
     private String species;
     private String sex;
 
@@ -35,13 +38,16 @@ public class Pet {
 
     public Pet() {}
 
-    public Pet(String name, String owner, String species, String sex, String dataIn, String dataOut) {
+    public Pet(String name, String ownerFirstName, String ownerLastName, String species, String sex, String dataIn, String dataOut, String status, String vet) {
         this.name = name;
-        this.owner = owner;
+        this.ownerFirstName = ownerFirstName;
+        this.ownerLastName = ownerLastName;
         this.species = species;
         this.sex = sex;
         this.dataIn = dataIn;
         this.dataOut = dataOut;
+        this.status = status;
+        this.vet = vet;
     }
 
     @Override
@@ -49,12 +55,13 @@ public class Pet {
         return "Pet{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", owner='" + owner + '\'' +
+                ", ownerFirstName='" + ownerFirstName + '\'' +
+                ", ownerLastName='" + ownerLastName + '\'' +
                 ", species='" + species + '\'' +
                 ", sex='" + sex + '\'' +
                 ", dataIn='" + dataIn + '\'' +
                 ", dataOut='" + dataOut + '\'' +
-                ", dataOut='" + dataOut + '\'' +
+                ", status='" + status + '\'' +
                 ", vet='" + vet + '\'' +
                 '}';
     }
@@ -75,12 +82,20 @@ public class Pet {
         this.name = name;
     }
 
-    public String getOwner() {
-        return owner;
+    public String getOwnerFirstName() {
+        return ownerFirstName;
     }
 
-    public void setOwner(String owner) {
-        this.owner = owner;
+    public void setOwnerFirstName(String ownerFirstName) {
+        this.ownerFirstName = ownerFirstName;
+    }
+
+    public String getOwnerLastName() {
+        return ownerLastName;
+    }
+
+    public void setOwnerLastName(String ownerLastName) {
+        this.ownerLastName = ownerLastName;
     }
 
     public String getSpecies() {
