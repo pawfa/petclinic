@@ -9,11 +9,13 @@ import hello.service.pet.PetService;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -44,6 +46,11 @@ public class HelloController {
 
     /* main page part */
 
+    @InitBinder
+    public void initBinder(WebDataBinder binder) {
+            binder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
+        }
+
     @GetMapping("/")
     public String index() throws  IOException {
         return "index";
@@ -69,8 +76,8 @@ public class HelloController {
         if (bindingResult.hasErrors()) {
             return "registrationForm";
         }
-//        ownerService.saveOwner(owner);
-//        securityService.autologin(owner.getMail(), owner.getPassword());
+        ownerService.saveOwner(owner);
+        securityService.autologin(owner.getMail(), owner.getPassword());
         return "owner";
     }
 
@@ -81,11 +88,8 @@ public class HelloController {
 
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         Owner user = ownerService.findByMail(auth.getName());
-//        System.out.println(user.getFirstName());
-//        System.out.println(user.getLastName());
         Iterable<Pet> pets = petService.findByOwnerFirstNameAndOwnerLastName(user.getFirstName(),user.getLastName());
         theModel.addAttribute("pets",pets);
-
         return "owner";
     }
 

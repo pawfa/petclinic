@@ -1,9 +1,11 @@
 table{
     margin-bottom: 100px;
-
 }
 th, td{
     text-align: left;
+}
+th:last-child{
+    width: 200px;
 }
 .vet{
     text-align: center;

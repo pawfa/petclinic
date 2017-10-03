@@ -38,8 +38,8 @@ public class SecurityServiceImpl implements SecurityService {
 
     @Override
     public void autologin(String mail, String password) {
-        Owner userDetails = ownerService.findByMail(mail);
-        UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(userDetails, password);
+//        Owner userDetails = ownerService.findByMail(mail);
+        UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(mail, password);
 
         System.out.println("Usernamepasswordauth name"+usernamePasswordAuthenticationToken.getName());
         System.out.println("Usernamepasswordauth credentials"+usernamePasswordAuthenticationToken.getCredentials());

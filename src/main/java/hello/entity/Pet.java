@@ -1,7 +1,10 @@
 package hello.entity;
 
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 /**
@@ -16,18 +19,30 @@ public class Pet {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private int id;
 
+    @NotNull
     private String name;
+
     @Column(name ="owner_first_name")
+    @NotNull
     private String ownerFirstName;
+
     @Column(name ="owner_last_name")
+    @NotNull
     private String ownerLastName;
+
+    @NotNull
     private String species;
+
+    @NotNull
     private String sex;
 
     @Column(name ="admitted")
+    @NotNull
+    @DateTimeFormat
     private String dataIn;
 
     @Column(name ="discharged")
+    @DateTimeFormat
     private String dataOut;
 
     @Column(name ="pet_status")
