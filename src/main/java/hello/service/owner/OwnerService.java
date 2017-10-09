@@ -10,7 +10,7 @@ import hello.entity.Owner;
 public interface OwnerService {
 
     Iterable<Owner> findAll();
-    void saveOwner(Owner owner);
+    void saveOwner(Owner owner) throws Exception;
     Owner findByMail(String mail);
     Owner findByFirstNameAndLastName(String firstLastName);
 }

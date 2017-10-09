@@ -3,6 +3,7 @@ package hello.service.owner;
 import hello.dao.OwnerRepository;
 import hello.entity.Owner;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -25,8 +26,11 @@ public class OwnerServiceImpl implements OwnerService {
 
     @Override
     @Transactional
-    public void saveOwner(Owner owner) {
-        ownerRepository.save(owner);
+    public void saveOwner(Owner owner) throws Exception {
+        if(ownerRepository.findByMail(owner.getMail()) != null){
+            throw new Exception("Mail already exists in database");
+        }
+//        ownerRepository.save(owner);
     }
 
     @Override

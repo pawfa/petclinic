@@ -22,56 +22,53 @@
 
 </head>
 <body>
-    <div class="container">
+<div class="container">
     <H2>Registration Form</H2>
-    </div>
+</div>
 
-    <div class="container">
-                <!--/*@thymesVar id="owner" type="hello.entity.Owner"*/-->
-                <form action="#" th:action="@{/registration}" th:object="${owner}" method="post">
-                    <div class="row">
-                        <div class="col l6">
-                        <div class="input-field">
-                            <input placeholder="Name" th:field="*{firstName}" type="text" />
-                            <td th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">Name Error</td>
-                            <label>First name</label>
-                        </div>
-                        </div>
-                        <div class="col l6">
-                        <div class="input-field">
-                            <input placeholder="Surname" type="text" th:field="*{lastName}" class="validate"/>
-                            <label>Last name</label>
-                        </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col l6">
-                        <div class="input-field">
-                            <input placeholder="E-mail" type="text" th:field="*{mail}" class="validate"/>
-                            <label>Mail</label>
-                        </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                            <div class="input-field">
-                                <input placeholder="Password" type="text" th:field="*{password}" class="validate"/>
-                                <label>Password</label>
-                            </div>
-                    </div>
-                    <button class="btn waves-effect waves-light" type="submit" name="registration">Submit
-                        <i class="material-icons right">send</i>
-                    </button>
-                </form>
+<div class="container">
+
+    <!--/*@thymesVar id="owner" type="hello.entity.Owner"*/-->
+    <form action="#" th:action="@{/registration}" th:object="${owner}" method="post">
+        <td th:if="${#fields.hasErrors('global')}" th:errors="*{global}">DZIALA</td>
+        <div class="row">
+            <div class="col l6">
+                <div class="input-field">
+                    <input placeholder="Name" th:field="*{firstName}" type="text"/>
+                    <td th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">Invalid First Name</td>
+
+                    <label>First name</label>
+                </div>
             </div>
+            <div class="col l6">
+                <div class="input-field">
+                    <input placeholder="Surname" type="text" th:field="*{lastName}" class="validate"/>
+                    <td th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">Invalid Last Name</td>
+                    <label>Last name</label>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col l6">
+                <div class="input-field">
+                    <input placeholder="E-mail" type="text" th:field="*{mail}" class="validate"/>
+                    <td th:if="${#fields.hasErrors('mail')}" th:errors="*{mail}">Invalid Mail</td>
+                    <label>Mail</label>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field">
+                <input placeholder="Password" type="text" th:field="*{password}" class="validate"/>
+                <td th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password may not be empty</td>
+                <label>Password</label>
+            </div>
+        </div>
+        <button class="btn waves-effect waves-light" type="submit" name="registration">Submit
+            <i class="material-icons right">send</i>
+        </button>
+    </form>
+</div>
 
-    <!--<form action="#" th:action="@{/registration}" th:object="${owner}" method="post">-->
-        <!--<p>Id: <input type="text" th:field="*{id}" /></p>-->
-        <!--<p>Fname: <input type="text" th:field="*{firstName}" /></p>-->
-        <!--<p>Lname: <input type="text" th:field="*{lastName}" /></p>-->
-        <!--<p>Pet: <input type="text" th:field="*{pet}" /></p>-->
-        <!--<p>Mail: <input type="text" th:field="*{mail}" /></p>-->
-        <!--<p>Pass: <input type="text" th:field="*{password}" /></p>-->
-        <!--<p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>-->
-    <!--</form>-->
 </body>
 </html>
