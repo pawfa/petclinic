@@ -2,8 +2,7 @@ package hello;
 
 import hello.entity.Owner;
 import hello.entity.Pet;
-import hello.entity.Vet;
-import hello.security.service.SecurityService;
+import hello.security.validation.UserExistsException;
 import hello.service.owner.OwnerService;
 import hello.service.pet.PetService;
 import org.apache.commons.logging.Log;
@@ -15,16 +14,13 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
+import javax.naming.Binding;
 import javax.validation.Valid;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 /**
  * Created by Pawel on 2017-07-21.
@@ -37,13 +33,11 @@ public class HelloController {
 
     private PetService petService;
     private OwnerService ownerService;
-    private SecurityService securityService;
 
     @Autowired
-    public HelloController(PetService petService, OwnerService ownerService, SecurityService securityService) {
+    public HelloController(PetService petService, OwnerService ownerService) {
         this.petService = petService;
         this.ownerService = ownerService;
-        this.securityService = securityService;
     }
 
     /* main page part */
@@ -75,19 +69,18 @@ public class HelloController {
     @PostMapping("/registration")
     public String registrationSubmit(@ModelAttribute @Valid Owner owner, BindingResult bindingResult) {
 
-
-        try {
-            ownerService.saveOwner(owner);
-        } catch (Exception e) {
-            ObjectError er = new ObjectError("mailExists","User already exists in database");
-            bindingResult.addError(er);
-        }
-
         if (bindingResult.hasErrors()) {
             return "registrationForm";
         }
+        try {
+            ownerService.saveOwner(owner);
+        } catch (UserExistsException e) {
+            ObjectError er = new ObjectError("mailExists", "User already exists in database");
+            bindingResult.addError(er);
+            logger.error(e);
+            return "registrationForm";
+        }
 
-//        securityService.autologin(owner.getMail(), owner.getPassword());
         return "owner";
 
     }
@@ -113,14 +106,24 @@ public class HelloController {
     }
 
     @PostMapping("/addPet")
-    public String savePet(@ModelAttribute("pet") Pet pet) {
-        petService.save(pet);
+    public String savePet(@ModelAttribute @Valid Pet pet, BindingResult bindingResult) {
+        System.out.println(pet.getDataIn());
+        if (bindingResult.hasErrors()) {
+            System.out.println("tutaj dziala");
+            return "add_pet";
+        }
+        try {
+            petService.save(pet);
+        } catch (Exception e) {
+            System.out.println(bindingResult.hasErrors());
+            return "add_pet";
+        }
+
         return "redirect:/vet";
     }
 
     @PostMapping("/updatePet")
     public String updatePet(@RequestParam(value = "petId") int petId, Model theModel) {
-
         Pet pet = petService.findById(petId);
         theModel.addAttribute("pet", pet);
         return "add_pet";

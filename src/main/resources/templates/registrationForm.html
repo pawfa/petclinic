@@ -30,13 +30,12 @@
 
     <!--/*@thymesVar id="owner" type="hello.entity.Owner"*/-->
     <form action="#" th:action="@{/registration}" th:object="${owner}" method="post">
-        <td th:if="${#fields.hasErrors('global')}" th:errors="*{global}">DZIALA</td>
+        <td th:if="${#fields.hasErrors('global')}" th:errors="*{global}"></td>
         <div class="row">
             <div class="col l6">
                 <div class="input-field">
                     <input placeholder="Name" th:field="*{firstName}" type="text"/>
                     <td th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">Invalid First Name</td>
-
                     <label>First name</label>
                 </div>
             </div>

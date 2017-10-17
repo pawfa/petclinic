@@ -1,4 +1,4 @@
-package hello.security.service;
+package hello.security;
 
 public interface SecurityService {
 

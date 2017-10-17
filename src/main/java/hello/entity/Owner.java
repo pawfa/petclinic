@@ -1,5 +1,6 @@
 package hello.entity;
 
+import hello.security.validation.EmailValidation;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -25,6 +26,7 @@ public class Owner {
     @Column(name = "mail")
     @NotNull
     @Email
+    @EmailValidation
     private String mail;
 
     @Column(name = "password")

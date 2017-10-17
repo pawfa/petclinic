@@ -1,4 +1,4 @@
-package hello.dao;
+package hello.security;
 
 import hello.entity.Owner;
 import hello.entity.Vet;
@@ -18,7 +18,7 @@ import javax.transaction.Transactional;
 import javax.validation.constraints.Null;
 import java.util.ArrayList;
 import java.util.Collection;
-
+// klasa sprawdzajaca wpisane dane i tworzaca userdetailsservice
 @Service
 public class UserDetailsServiceDAO implements UserDetailsService {
 

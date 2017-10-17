@@ -26,12 +26,19 @@
 
     <p>Id: <input type="hidden" th:field="*{id}" /></p>
     <p>Name: <input type="text" th:field="*{name}" /></p>
+    <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name cannot be empty</td>
     <p>Owner's First Name: <input type="text" th:field="*{ownerFirstName}" /></p>
+    <td th:if="${#fields.hasErrors('ownerFirstName')}" th:errors="*{ownerFirstName}">Owner's name cannot be empty</td>
     <p>Owner's Last Name: <input type="text" th:field="*{ownerLastName}" /></p>
+    <td th:if="${#fields.hasErrors('ownerLastName')}" th:errors="*{ownerLastName}">Owner's name cannot be empty</td>
     <p>Species: <input type="text" th:field="*{species}" /></p>
+    <td th:if="${#fields.hasErrors('species')}" th:errors="*{species}">Species cannot be empty</td>
     <p>Sex: <input type="text" th:field="*{sex}" /></p>
-    <p>Data In: <input type="text" th:field="*{dataIn}" /></p>
-    <p>Data Out: <input type="text" th:field="*{dataOut}" /></p>
+    <td th:if="${#fields.hasErrors('sex')}" th:errors="*{sex}">Pets sex cannot be empty</td>
+    <p>Data In: <input type="text" th:placeholder="dd-mm-yyyy" th:field="*{dataIn}" /></p>
+    <td th:if="${#fields.hasErrors('dataIn')}" th:errors="*{dataIn}"></td>
+    <p>Data Out: <input type="text" th:placeholder="dd-mm-yyyy" th:field="*{dataOut}" /></p>
+    <td th:if="${#fields.hasErrors('dataOut')}" th:errors="*{dataOut}"></td>
     <p>Vet: <input type="text" th:field="*{vet}" /></p>
     <p>Status: <input type="text" th:field="*{status}" /></p>
     <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>

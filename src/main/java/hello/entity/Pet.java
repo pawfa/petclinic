@@ -1,10 +1,15 @@
 package hello.entity;
 
 
+import hello.security.validation.DateValidation;
+import org.springframework.data.annotation.CreatedDate;
 import org.springframework.format.annotation.DateTimeFormat;
+import sun.java2d.pipe.SpanShapeRenderer;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -37,12 +42,11 @@ public class Pet {
     private String sex;
 
     @Column(name ="admitted")
-    @NotNull
-    @DateTimeFormat
+    @NotNull(message = "Please provide a date.")
+    @DateValidation
     private String dataIn;
 
     @Column(name ="discharged")
-    @DateTimeFormat
     private String dataOut;
 
     @Column(name ="pet_status")
@@ -134,7 +138,8 @@ public class Pet {
     }
 
     public void setDataIn(String dataIn) {
-        this.dataIn = dataIn;
+            this.dataIn = dataIn;
+
     }
 
     public String getDataOut() {

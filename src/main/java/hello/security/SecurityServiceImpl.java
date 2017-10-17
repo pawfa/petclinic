@@ -1,4 +1,4 @@
-package hello.security.service;
+package hello.security;
 
 import hello.entity.Owner;
 import hello.service.owner.OwnerService;
@@ -38,7 +38,7 @@ public class SecurityServiceImpl implements SecurityService {
 
     @Override
     public void autologin(String mail, String password) {
-//        Owner userDetails = ownerService.findByMail(mail);
+        Owner userDetails = ownerService.findByMail(mail);
         UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(mail, password);
 
         System.out.println("Usernamepasswordauth name"+usernamePasswordAuthenticationToken.getName());

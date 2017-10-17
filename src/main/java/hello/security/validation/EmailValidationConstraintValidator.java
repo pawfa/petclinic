@@ -13,6 +13,6 @@ public class EmailValidationConstraintValidator implements ConstraintValidator<E
 
     @Override
     public boolean isValid(String s, ConstraintValidatorContext constraintValidatorContext) {
-        return false;
+        return !s.contains("@petclinic.com");
     }
 }
