@@ -9,6 +9,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -18,7 +19,8 @@ import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
-import javax.naming.Binding;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.io.IOException;
 
@@ -52,9 +54,8 @@ public class HelloController {
         return "index";
     }
 
-    @GetMapping("/login-error")
-    public String loginError(Model theModel) {
-        theModel.addAttribute("loginError", true);
+    @GetMapping("/?error")
+    public String loginError() {
         return "index";
     }
 
@@ -82,7 +83,6 @@ public class HelloController {
         }
 
         return "owner";
-
     }
 
     /* owner page part */

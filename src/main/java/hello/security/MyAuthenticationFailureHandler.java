@@ -25,11 +25,9 @@ public class MyAuthenticationFailureHandler implements AuthenticationFailureHand
 
         if(e != null){
             logger.error("Blad w authenticationfailurehandler", e);
-            httpServletRequest.getSession().setAttribute("parameter",true);
+            httpServletRequest.getSession().setAttribute("param","error");
         }
             redirectStrategy.sendRedirect(httpServletRequest, httpServletResponse, "/login-error");
-
-
 
     }
 }

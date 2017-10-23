@@ -72,10 +72,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
                 .loginPage("/")
                 .usernameParameter("username")
                 .passwordParameter("password")
-                .failureUrl("/login-error")
+                .failureUrl("/?error")
                 .loginProcessingUrl("/")
-                .successHandler(authenticationSuccessHandler)
-                .failureHandler(authenticationFailureHandler);
+                .successHandler(authenticationSuccessHandler);
+//                .failureHandler(authenticationFailureHandler);
     }
 
 }
