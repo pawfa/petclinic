@@ -1,9 +1,8 @@
 .container{
     margin: 0 auto;
     text-align: center;
-    /*border: solid red 1px;*/
+    width: 300px;
 }
-.l4{
-    /*border: solid blue 1px;*/
-    /*margin: 0 100px;*/
+.registration{
+    width: 300px;
 }

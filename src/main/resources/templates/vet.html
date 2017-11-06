@@ -15,6 +15,9 @@
 
     <link rel="stylesheet" type="text/css" href="/css/styles.css"/>
 
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+
+
     <title>Vet site</title>
 </head>
 <body>
@@ -151,10 +154,10 @@
         </th:block>
 
 </table>
+    <form th:action="@{/logout}" method="post" class="logout">
+        <Button th:type="submit" class="btn btn-primary">Logout</Button>
+    </form>
 </div>
 
-<form th:action="@{/logout}" method="post">
-    <input type="submit" value="Sign Out"/>
-</form>
 </body>
 </html>

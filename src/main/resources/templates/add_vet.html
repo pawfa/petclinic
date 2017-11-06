@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Getting Started: Handling Form Submission</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 
     <!-- Jquery -->
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
@@ -16,21 +16,28 @@
     <!-- CSS styles -->
 
     <link rel="stylesheet" type="text/css" href="/css/styles.css"/>
+
+
 </head>
 <body>
-<h1>Form</h1>
+<div class="container">
+<h1>Add Vet Form</h1>
+</div>
 
 <!--/*@thymesVar id="vet" type="hello.entity.Vet"*/-->
+<div class="container add">
+    <div class="row">
+        <form action="addVet" th:action="@{/addVet}" th:object="${vet}" method="post">
 
-<form action="addVet" th:action="@{/addVet}" th:object="${vet}" method="post">
+            <input type="hidden" th:field="*{id}"/>
+            <p>First Name: <input type="text" th:field="*{firstName}"/></p>
+            <p>Last Name: <input type="text" th:field="*{lastName}"/></p>
+            <p>Speciality: <input type="text" th:field="*{spec}"/></p>
+            <p>Password: <input type="text" th:field="*{password}"/></p>
+            <Button th:type="submit" class="btn btn-primary">Add</Button><a class="btn btn-primary sec-btn" th:href="@{/vet}">Back</a>
+        </form>
 
-    <p>Id: <input type="hidden" th:field="*{id}" /></p>
-    <p>First Name: <input type="text" th:field="*{firstName}" /></p>
-    <p>Last Name: <input type="text" th:field="*{lastName}" /></p>
-    <p>Speciality: <input type="text" th:field="*{spec}" /></p>
-    <p>Password: <input type="text" th:field="*{password}" /></p>
-    <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
-</form>
-
+    </div>
+</div>
 </body>
 </html>

@@ -22,15 +22,13 @@
 
 </head>
 <body>
-<div class="container">
+<div class="container registration">
     <H2>Registration Form</H2>
 </div>
 
-<div class="container">
-
+<div class="container registration">
     <!--/*@thymesVar id="owner" type="hello.entity.Owner"*/-->
     <form action="#" th:action="@{/registration}" th:object="${owner}" method="post">
-        <td th:if="${#fields.hasErrors('global')}" th:errors="*{global}"></td>
         <div class="row">
             <div class="col l6">
                 <div class="input-field">
@@ -55,12 +53,12 @@
                     <label>Mail</label>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="input-field">
-                <input placeholder="Password" type="text" th:field="*{password}" class="validate"/>
-                <td th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password may not be empty</td>
-                <label>Password</label>
+            <div class="col l6">
+                <div class="input-field">
+                    <input placeholder="Password" type="text" th:field="*{password}" class="validate"/>
+                    <td th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password may not be empty</td>
+                    <label>Password</label>
+                </div>
             </div>
         </div>
         <button class="btn waves-effect waves-light" type="submit" name="registration">Submit

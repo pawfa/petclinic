@@ -19,15 +19,10 @@
 </head>
 <body>
 <div class="container">
-    <h2>Vet List</h2>
-</div>
-
-<div class="container">
     <h2>Pet List</h2>
     <table class="striped">
     <thead>
     <tr>
-        <th>Id</th>
         <th>Name</th>
         <th>Owner First Name</th>
         <th>Owner Last Name</th>
@@ -43,7 +38,6 @@
     <!--/*@thymesVar id="pet" type="hello.entity.Pet"*/-->
     <th:block th:each="pet:${pets}">
         <tr>
-        <td th:text="${pet.id}"></td>
         <td th:text="${pet.name}"></td>
         <td th:text="${pet.ownerFirstName}"></td>
         <td th:text="${pet.ownerLastName}"></td>
@@ -57,10 +51,11 @@
     </th:block>
 
 </table>
+    <form th:action="@{/logout}" method="post" class="logout">
+        <Button th:type="submit" class="btn btn-primary">Logout</Button>
+    </form>
 </div>
 
-<form th:action="@{/logout}" method="post">
-    <input type="submit" value="Sign Out"/>
-</form>
+
 </body>
 </html>

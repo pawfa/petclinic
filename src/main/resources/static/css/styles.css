@@ -1,6 +1,7 @@
 table{
-    margin-bottom: 100px;
+    margin-bottom: 50px;
 }
+
 th, td{
     text-align: left;
 }
@@ -25,4 +26,19 @@ th:last-child{
     float:left;
     width: 50%;
     height: 100%;
+}
+.logout{
+    float: right;
+    display:block;
+    margin-bottom: 100px;
+}
+.add{
+    width: 300px;
+}
+.container{
+    margin: 0 auto;
+    text-align: center;
+}
+.sec-btn {
+    margin-left: 20px;
 }

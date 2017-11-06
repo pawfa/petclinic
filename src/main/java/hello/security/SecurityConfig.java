@@ -19,15 +19,13 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
 public class SecurityConfig extends WebSecurityConfigurerAdapter{
 
     private AuthenticationSuccessHandler authenticationSuccessHandler;
-    private AuthenticationFailureHandler authenticationFailureHandler;
     private UserDetailsService userDetailsService;
 
 
     @Autowired
-    public SecurityConfig(AuthenticationSuccessHandler authenticationSuccessHandler, UserDetailsService userDetailsService, AuthenticationFailureHandler authenticationFailureHandler) {
+    public SecurityConfig(AuthenticationSuccessHandler authenticationSuccessHandler, UserDetailsService userDetailsService) {
         this.authenticationSuccessHandler = authenticationSuccessHandler;
         this.userDetailsService = userDetailsService;
-        this.authenticationFailureHandler = authenticationFailureHandler;
     }
 
     @Bean
@@ -41,6 +39,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
         DaoAuthenticationProvider authenticationProvider = new DaoAuthenticationProvider();
         authenticationProvider.setUserDetailsService(userDetailsService);
         authenticationProvider.setPasswordEncoder(passwordEncoder());
+        System.out.println(passwordEncoder().encode("test"));
         return authenticationProvider;
     }
 
@@ -48,7 +47,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
     protected void configure(AuthenticationManagerBuilder auth)
             throws Exception {
             auth.userDetailsService(userDetailsService);
-//        auth.authenticationProvider(authenticationProvider());
+        auth.authenticationProvider(authenticationProvider());
     }
 
 
@@ -75,7 +74,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
                 .failureUrl("/?error")
                 .loginProcessingUrl("/")
                 .successHandler(authenticationSuccessHandler);
-//                .failureHandler(authenticationFailureHandler);
     }
 
 }
