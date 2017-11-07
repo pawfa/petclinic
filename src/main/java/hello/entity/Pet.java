@@ -2,15 +2,8 @@ package hello.entity;
 
 
 import hello.security.validation.DateValidation;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.format.annotation.DateTimeFormat;
-import sun.java2d.pipe.SpanShapeRenderer;
-
+import org.hibernate.validator.constraints.NotEmpty;
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 /**
  * Created by Pawel on 2017-07-21.
@@ -24,25 +17,25 @@ public class Pet {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private int id;
 
-    @NotNull
+    @NotEmpty
     private String name;
 
     @Column(name ="owner_first_name")
-    @NotNull
+    @NotEmpty
     private String ownerFirstName;
 
     @Column(name ="owner_last_name")
-    @NotNull
+    @NotEmpty
     private String ownerLastName;
 
-    @NotNull
+    @NotEmpty
     private String species;
 
-    @NotNull
+    @NotEmpty
     private String sex;
 
     @Column(name ="admitted")
-    @NotNull(message = "Please provide a date.")
+    @NotEmpty(message = "Please provide a date.")
     @DateValidation
     private String dataIn;
 

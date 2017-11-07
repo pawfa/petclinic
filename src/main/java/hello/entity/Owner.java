@@ -25,7 +25,6 @@ public class Owner {
 
     @Column(name = "mail")
     @NotNull
-    @Email
     @EmailValidation
     private String mail;
 

@@ -31,9 +31,13 @@
 
             <input type="hidden" th:field="*{id}"/>
             <p>First Name: <input type="text" th:field="*{firstName}"/></p>
+            <p th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">First Name cannot be empty</p>
             <p>Last Name: <input type="text" th:field="*{lastName}"/></p>
+            <p th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">Last Name cannot be empty</p>
             <p>Speciality: <input type="text" th:field="*{spec}"/></p>
+            <p th:if="${#fields.hasErrors('spec')}" th:errors="*{spec}">Speciality cannot be empty</p>
             <p>Password: <input type="text" th:field="*{password}"/></p>
+            <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password cannot be empty</p>
             <Button th:type="submit" class="btn btn-primary">Add</Button><a class="btn btn-primary sec-btn" th:href="@{/vet}">Back</a>
         </form>
 

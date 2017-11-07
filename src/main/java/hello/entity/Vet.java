@@ -34,7 +34,7 @@ public class Vet {
     public Vet() {
     }
 
-    public Vet(int id,String firstName, String lastName, String spec) {
+    public Vet(int id,String firstName, String lastName, String spec, String password) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;

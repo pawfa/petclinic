@@ -38,16 +38,16 @@
                 empty
             </td>
             <p>Species: <input type="text" th:field="*{species}"/></p>
-            <td th:if="${#fields.hasErrors('species')}" th:errors="*{species}">Species cannot be empty</td>
+            <p th:if="${#fields.hasErrors('species')}" th:errors="*{species}">Species cannot be empty</p>
             <p>Sex: <input type="text" th:field="*{sex}"/></p>
-            <td th:if="${#fields.hasErrors('sex')}" th:errors="*{sex}">Pets sex cannot be empty</td>
+            <p th:if="${#fields.hasErrors('sex')}" th:errors="*{sex}">Pets sex cannot be empty</p>
             <p>Data In: <input type="text" th:placeholder="dd-mm-yyyy" th:field="*{dataIn}"/></p>
-            <td th:if="${#fields.hasErrors('dataIn')}" th:errors="*{dataIn}"></td>
+            <p th:if="${#fields.hasErrors('dataIn')}" th:errors="*{dataIn}"></p>
             <p>Data Out: <input type="text" th:placeholder="dd-mm-yyyy" th:field="*{dataOut}"/></p>
-            <td th:if="${#fields.hasErrors('dataOut')}" th:errors="*{dataOut}"></td>
+            <p th:if="${#fields.hasErrors('dataOut')}" th:errors="*{dataOut}"></p>
             <p>Vet: <input type="text" th:field="*{vet}"/></p>
             <p>Status: <input type="text" th:field="*{status}"/></p>
-            <Button th:type="submit" class="btn btn-primary">Add</Button><a class="btn btn-primary sec-btn" th:href="@{/vet}">Back</a>
+            <Button th:type="submit" class="btn btn-primary ">Add</Button><a class="btn btn-primary sec-btn" th:href="@{/vet}">Back</a>
         </form>
     </div>
 </div>
