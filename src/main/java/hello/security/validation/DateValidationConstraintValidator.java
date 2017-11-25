@@ -26,7 +26,6 @@ public class DateValidationConstraintValidator implements ConstraintValidator<Da
         try {
             //if not valid, it will throw ParseException
             Date date = sdf.parse(s);
-            System.out.println(date);
         } catch (ParseException e) {
 
             e.printStackTrace();

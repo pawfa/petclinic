@@ -4,7 +4,6 @@ import hello.dao.OwnerRepository;
 import hello.entity.Owner;
 import hello.security.validation.UserExistsException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DuplicateKeyException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 

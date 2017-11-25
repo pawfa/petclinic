@@ -14,8 +14,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import javax.transaction.Transactional;
-import javax.validation.constraints.Null;
 import java.util.ArrayList;
 import java.util.Collection;
 // klasa sprawdzajaca wpisane dane i tworzaca userdetailsservice

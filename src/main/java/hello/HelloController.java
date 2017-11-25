@@ -110,15 +110,12 @@ public class HelloController {
 
     @PostMapping("/addPet")
     public String savePet(@ModelAttribute @Valid Pet pet, BindingResult bindingResult) {
-        System.out.println(pet.getDataIn());
         if (bindingResult.hasErrors()) {
-            System.out.println("tutaj dziala");
             return "add_pet";
         }
         try {
             petService.save(pet);
         } catch (Exception e) {
-            System.out.println(bindingResult.hasErrors());
             return "add_pet";
         }
 

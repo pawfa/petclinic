@@ -30,7 +30,6 @@ public class SecurityServiceImpl implements SecurityService {
 
         Object userDetails = SecurityContextHolder.getContext().getAuthentication().getDetails();
         if (userDetails instanceof Owner) {
-            System.out.println("Securiry service casting");
             return ((Owner)userDetails).getMail();
         }
         return null;
@@ -38,17 +37,9 @@ public class SecurityServiceImpl implements SecurityService {
 
     @Override
     public void autologin(String mail, String password) {
-        Owner userDetails = ownerService.findByMail(mail);
         UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(mail, password);
 
-        System.out.println("Usernamepasswordauth name"+usernamePasswordAuthenticationToken.getName());
-        System.out.println("Usernamepasswordauth credentials"+usernamePasswordAuthenticationToken.getCredentials());
-        System.out.println("Usernamepasswordauth credentials"+usernamePasswordAuthenticationToken.isAuthenticated());
-        System.out.println("Metoda autologin autentykacja");
         authenticationManager.authenticate(usernamePasswordAuthenticationToken);
-
-        System.out.println("Usernamepasswordauth is authenticated"+usernamePasswordAuthenticationToken.isAuthenticated());
-
         if (usernamePasswordAuthenticationToken.isAuthenticated()) {
             SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);
         }
