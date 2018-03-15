@@ -1,10 +1,10 @@
 # Pet Clinic
 
-Simple overview of use/purpose.
+Simple Spring Boot application.
 
 ## Description
 
-An in-depth paragraph about your project and overview of use.
+Idea was taken from example Spring application Pet Clinic. In this web application as a user you can see your pet status and as a vet you can add pets, vets and modify their properties.
 
 ## Getting Started
 
