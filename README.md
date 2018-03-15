@@ -11,7 +11,7 @@ Idea was taken from example Spring application Pet Clinic. In this web applicati
 ### Technology Stack
 Component         | Technology
 ---               | ---
-Frontend          | [Themyleaf](https://www.thymeleaf.org/)
+Frontend          | [Thymeleaf](https://www.thymeleaf.org/)
 Backend           | [SpringBoot](https://projects.spring.io/spring-boot) (Java)
 Security          | Spring Security
 In Memory DB      | H2
