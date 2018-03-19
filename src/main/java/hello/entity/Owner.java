@@ -5,7 +5,6 @@ import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "owner")
@@ -16,20 +15,20 @@ public class Owner {
     private int id;
 
     @Column(name = "first_name")
-    @NotNull
+    @NotEmpty
     private String firstName;
 
     @Column(name = "last_name")
-    @NotNull
+    @NotEmpty
     private String lastName;
 
     @Column(name = "mail")
-    @NotNull
+    @Email
     @EmailValidation
     private String mail;
 
     @Column(name = "password")
-    @NotNull
+    @NotEmpty
     private String password;
 
 

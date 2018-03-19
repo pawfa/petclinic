@@ -59,8 +59,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
     protected void configure(HttpSecurity http) throws Exception {
 
         http
+                //lines below is for h2 database console in browser
+                .cors()
+                .and()
+                .headers().frameOptions().disable()
+                .and()
+                .csrf().disable()
+
                 .authorizeRequests()
-                .antMatchers("/", "/css/**", "/js/**", "/images/**","/registration","/registrationForm","/login-error").permitAll()
+                .antMatchers("/", "/css/**", "/js/**", "/images/**","/registration","/registrationForm","/login-error", "/h2/*").permitAll()
                 .antMatchers("/owner/**").hasAnyRole("USER", "ADMIN")
                 .antMatchers("/vet/**").hasRole("ADMIN")
                 .anyRequest()
