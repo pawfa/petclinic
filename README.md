@@ -1,61 +1,44 @@
 # Pet Clinic
 
-Simple overview of use/purpose.
+Simple Spring Boot application.
 
 ## Description
 
-An in-depth paragraph about your project and overview of use.
+Idea was taken from example Spring application Pet Clinic. In this web application as a user you can see your pet status and as a vet you can add pets, vets and modify their properties. Every code review and criticism is welcome.
+
+You can see working demo [here](http://petclinic.pawfa.usermd.net:8098). You can create your own account and then login as vet to add your pet with credentials: - email: albus.dumbledore@petclinic.com password: albus.
 
 ## Getting Started
 
+### Technology Stack
+Component         | Technology
+---               | ---
+Frontend          | [Thymeleaf](https://www.thymeleaf.org/)
+Backend           | [SpringBoot](https://projects.spring.io/spring-boot) (Java)
+Security          | Spring Security
+In Memory DB      | H2
+Persistence       | JPA (Using Spring Data)
+Build Tools       | Maven(Java)
+
 ### Dependencies
 
-* Describe any prerequisites, libraries, OS version, etc., needed before installing program.
-* ex. Windows 10
+- Java 8
+- Maven 3.3.9+
 
 ### Installing
 
-* How/where to download your program
-* Any modifications needed to be made to files/folders
+To install this application, run the following commands:
+```bash
+git clone git@github.com:pawfa/petclinic.git
+cd petclinic
+```
+This will get a copy of the project installed locally.
 
 ### Executing program
 
-* How to run the program
-* Step-by-step bullets
-```
-code blocks for commands
-```
-
-## Help
-
-Any advise for common problems or issues.
-```
-command to run if program contains helper info
+To run the program, cd into the `petclinic` folder and run:
+ 
+```bash
+mvn package && java -jar target/petclinic-1.0-SNAPSHOT.jar
 ```
 
-## Authors
-
-Contributors names and contact info
-
-ex. Dominique Pizzie  
-ex. [@DomPizzie](https://twitter.com/dompizzie)
-
-## Version History
-
-* 0.2
-    * Various bug fixes and optimizations
-    * See [commit change]() or See [release history]()
-* 0.1
-    * Initial Release
-
-## License
-
-This project is licensed under the [NAME HERE] License - see the LICENSE.md file for details
-
-## Acknowledgments
-
-Inspiration, code snippets, etc.
-* [awesome-readme](https://github.com/matiassingers/awesome-readme)
-* [PurpleBooth](https://gist.github.com/PurpleBooth/109311bb0361f32d87a2)
-* [dbader](https://github.com/dbader/readme-template)
-* [zenorocha](https://gist.github.com/zenorocha/4526327)
