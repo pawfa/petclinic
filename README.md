@@ -6,6 +6,8 @@ Simple Spring Boot application.
 
 Idea was taken from example Spring application Pet Clinic. In this web application as a user you can see your pet status and as a vet you can add pets, vets and modify their properties.
 
+You can see working demo [here](http://petclinic.pawfa.usermd.net:8098). You can create your own account and then login as vet to add your pet with credentials: - email: albus.dumbledore@petclinic.com password: albus.
+
 ## Getting Started
 
 ### Technology Stack
