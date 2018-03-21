@@ -26,7 +26,7 @@
         <!--/*@thymesVar id="pet" type="hello.entity.Pet"*/-->
         <form action="addPet" th:action="@{/addPet}" th:object="${pet}" method="post">
 
-            <p>Id: <input type="hidden" th:field="*{id}"/></p>
+            <input type="hidden" th:field="*{id}"/>
             <p>Name: <input type="text" th:field="*{name}"/></p>
             <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name cannot be empty</td>
             <p>Owner's First Name: <input type="text" th:field="*{ownerFirstName}"/></p>

@@ -7,11 +7,14 @@ import hello.service.vet.VetService;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -29,6 +32,11 @@ public class UserDetailsServiceDAO implements UserDetailsService {
     public UserDetailsServiceDAO(OwnerService ownerService, VetService vetService) {
         this.ownerService = ownerService;
         this.vetService = vetService;
+    }
+
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
     }
 
     private final Log logger = LogFactory.getLog(getClass());
@@ -52,8 +60,10 @@ public class UserDetailsServiceDAO implements UserDetailsService {
                 if (vet == null )throw new UsernameNotFoundException("Username vet not found");
 
                 String username = vet.getMail();
-                String password = vet.getPassword();
 
+
+                String password = vet.getPassword();
+                logger.info(passwordEncoder().encode(password)+" - password");
                 Collection authorities = new ArrayList();
 
                 authorities.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
